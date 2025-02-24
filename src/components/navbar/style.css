@@ -1,0 +1,18 @@
+#navbar-container {
+  background-color: #97010e;
+  display: flex;
+  align-items: center;
+  padding: 10px 50px;
+  justify-content: space-between;
+}
+#navbar-container h3 {
+  margin: 0;
+  color: white;
+  font-size: 1.35rem;
+}
+#navbar-container nav {
+  /* border: 1px white solid; */
+  display: flex;
+  gap: 25px;
+  font-size: 1.2rem;
+}
