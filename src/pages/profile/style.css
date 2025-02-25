@@ -1,0 +1,9 @@
+#profile-page {
+  border: 1px black solid;
+  padding: 25px;
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+} 

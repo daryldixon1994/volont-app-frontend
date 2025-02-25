@@ -11,11 +11,12 @@ import ContactUs from "./pages/contactus/ContactUs";
 import JoinRequests from "./pages/joinRequests/JoinRequests";
 import Login from "./pages/login/Login";
 import MyActs from "./pages/myActs/MyActs";
-import MyRequests from "./pages/myRequests/MyRequests";
 import Profile from "./pages/profile/Profile";
 import Settings from "./pages/settings/Settings";
 import NavBar from "./components/navbar/NavBar";
 import ConnexionLayout from "./layouts/ConnxionLayout";
+import PublicRoutes from "./routes/PublicRoutes";
+import PrivateRoutes from "./routes/PrivateRoutes";
 function App() {
   return (
     <div id="App">
@@ -26,15 +27,35 @@ function App() {
         <Route path="/verify-email/:id" element={<VerifyEmail />} />
         <Route path="/contact-us" element={<ContactUs />} />
         <Route element={<ConnexionLayout />}>
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
+          <Route
+            path="/register"
+            element={
+              <PublicRoutes>
+                <Register />
+              </PublicRoutes>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <PublicRoutes>
+                <Login />
+              </PublicRoutes>
+            }
+          />
         </Route>
         {/* user routes */}
         <Route path="/acts" element={<Acts />} />
         <Route path="/acts/:id" element={<SingleAct />} />
         <Route path="/associations" element={<Associations />} />
-        <Route path="/my-requests" element={<MyRequests />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route
+          path="/profile"
+          element={
+            <PrivateRoutes>
+              <Profile />
+            </PrivateRoutes>
+          }
+        />
         {/* user routes */}
         {/* association routes */}
         <Route path="/join-request" element={<JoinRequests />} />

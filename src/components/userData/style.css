@@ -1,0 +1,27 @@
+#user-data {
+  /* border: 1px blue solid; */
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+}
+#user-data h1 {
+  color: #5a6b5d;
+  margin-bottom: 0;
+}
+#user-data img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50% !important;
+  border: 0.5px rgb(207, 207, 207) solid;
+}
+#user-data h3 {
+  font-size: 0.9rem;
+  margin: 0;
+  color: rgb(103, 103, 103);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}

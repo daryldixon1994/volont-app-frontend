@@ -2,7 +2,8 @@ import { useState } from "react";
 import "./style.css";
 import { LuEye, LuEyeClosed } from "react-icons/lu";
 import axios from "axios";
-import { baseUrl } from "../../lib";
+import { baseUserUrl } from "../../lib";
+
 
 function RegisterUser() {
   const [registerData, setRegisterData] = useState({});
@@ -13,7 +14,7 @@ function RegisterUser() {
   };
   const handleClick = () => {
     axios
-      .post(`${baseUrl}/api/user/register`, registerData)
+      .post(`${baseUserUrl}/api/user/register`, registerData)
       .then((res) => console.log(res))
       .catch((err) => console.dir(err));
   };
