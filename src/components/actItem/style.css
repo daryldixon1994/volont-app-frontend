@@ -1,0 +1,12 @@
+#act-img {
+  height: 270px;
+  object-fit: cover;
+}
+.card {
+  /* border: 1px black solid; */
+  width: 25%;
+}
+
+#act-asso-link img {
+  border-radius: 50%;
+}

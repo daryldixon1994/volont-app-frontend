@@ -1,6 +1,8 @@
 import { baseUserUrl, getToken } from "../../lib";
 import useFetch from "../../lib/useFetch";
 import RequestItem from "../requestItem/RequestItem";
+import { RiInformationFill } from "react-icons/ri";
+
 import "./style.css";
 function MyRequests() {
   const token = getToken();
@@ -17,10 +19,16 @@ function MyRequests() {
         <span>Association:</span>
         <span>Status:</span>
       </div>
-      <div>
-        {data.map((elt, i) => (
-          <RequestItem key={i} {...elt} />
-        ))}
+      <div id="acts-bloc">
+        {data.length > 1 ? (
+          data.map((elt, i) => <RequestItem key={i} {...elt} />)
+        ) : (
+          <h3>
+            {" "}
+            <RiInformationFill />
+            No acts yet.
+          </h3>
+        )}
       </div>
     </div>
   );

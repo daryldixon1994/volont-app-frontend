@@ -5,6 +5,9 @@ import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./redux/store.js";
+import "primereact/resources/themes/mira/theme.css";
+// import "primereact/resources/themes/saga-blue/theme.css";
+import "primereact/resources/primereact.min.css";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>

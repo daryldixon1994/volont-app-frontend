@@ -4,6 +4,7 @@ import axios from "axios";
 function useFetch(url, token) {
   const [data, setData] = useState([]);
   const [error, setError] = useState([]);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     axios
       .get(url, {
@@ -11,13 +12,16 @@ function useFetch(url, token) {
           token,
         },
       })
-      .then((res) => setData(res.data.data))
+      .then((res) => {
+        setLoading(true);
+        setData(res.data.data);
+      })
       .catch((err) => {
-        
+        setLoading(false);
         setError(err.response);
       });
   }, [token, url]);
-  return { data, error };
+  return { data, error, loading };
 }
 
 export default useFetch;

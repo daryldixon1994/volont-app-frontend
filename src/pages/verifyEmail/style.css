@@ -1,0 +1,28 @@
+#verify-email-page {
+  border: 1px black solid;
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.verified-bloc {
+  /* border: 1px black solid; */
+  width: 30%;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.verified-bloc h1 {
+  color: #009c5c;
+  font-size: 2.8rem;
+  margin-top: 0;
+}
+.verified-bloc #err {
+  color: #d12525;
+  font-size: 2.8rem;
+  margin-top: 0;
+
+}

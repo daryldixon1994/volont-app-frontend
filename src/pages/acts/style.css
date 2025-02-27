@@ -1,0 +1,21 @@
+.acts-page {
+  /* border: 1px black solid; */
+  padding: 12px;
+  width: 1420px;
+  margin: auto;
+  min-height: 92.5vh;
+}
+.acts-bloc {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+}
+.acts-loading-box {
+  /* border: 1px red solid; */
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -22,7 +22,7 @@ function App() {
     <div id="App">
       <NavBar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route index path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/verify-email/:id" element={<VerifyEmail />} />
         <Route path="/contact-us" element={<ContactUs />} />

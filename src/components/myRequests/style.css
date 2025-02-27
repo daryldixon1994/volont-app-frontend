@@ -13,3 +13,9 @@
   grid-template: 1fr / repeat(3, 1fr);
   justify-items: center;
 }
+#acts-bloc h3 {
+  color: #969696;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}

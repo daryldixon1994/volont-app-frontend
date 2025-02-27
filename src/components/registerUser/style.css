@@ -12,7 +12,7 @@
   width: 80%;
   padding: 15px;
   display: grid;
-  gap: 10px;
+  gap: 20px;
   grid-template: repeat(7, 1fr) / 1fr;
 }
 .register-form input {
@@ -57,4 +57,16 @@
   right: 15px;
   top: 25%;
   cursor: pointer;
+}
+.field-box {
+  position: relative;
+}
+.register-form span {
+  font-size: 0.7rem;
+  color: red;
+  position: absolute;
+  width: 50%;
+  top: 0px;
+  right: -52%;
+  background-color: #f6fcff;
 }
