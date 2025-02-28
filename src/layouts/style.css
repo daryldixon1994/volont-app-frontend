@@ -25,3 +25,20 @@
 #connexion-layout-container .cnx-layout-btn:hover {
   text-decoration: underline;
 }
+#settings-layout {
+  /* border: 1px black solid; */
+  width: 94%;
+  margin: auto;
+  min-height: 92.5vh;
+}
+.settings-nav-section {
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+  gap: 20px;
+}
+.settings-nav-section a {
+  all: unset;
+  font-weight: 500;
+  font-size: 1.1rem;
+}

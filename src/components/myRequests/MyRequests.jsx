@@ -11,7 +11,7 @@ function MyRequests() {
     localStorage.clear();
     return window.location.assign("/login");
   }
-  console.log("data:", data);
+
   return (
     <div className="my-requests">
       <div className="my-requests-header">
@@ -20,7 +20,7 @@ function MyRequests() {
         <span>Status:</span>
       </div>
       <div id="acts-bloc">
-        {data.length > 1 ? (
+        {data.length >= 1 ? (
           data.map((elt, i) => <RequestItem key={i} {...elt} />)
         ) : (
           <h3>

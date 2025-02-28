@@ -61,6 +61,14 @@ function NavBar() {
               Profile
             </NavLink>
             <NavLink
+              to="/update-email"
+              style={({ isActive }) => {
+                return isActive ? activeLink : inactiveLink;
+              }}
+            >
+              Settings
+            </NavLink>
+            <NavLink
               style={{
                 all: "unset",
                 fontWeight: "700",

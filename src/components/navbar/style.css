@@ -4,6 +4,9 @@
   align-items: center;
   padding: 10px 50px;
   justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 #navbar-container h3 {
   margin: 0;

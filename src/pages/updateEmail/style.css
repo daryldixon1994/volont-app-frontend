@@ -1,0 +1,17 @@
+.update-section {
+  border: 1px blue solid;
+  min-height: 50vh;
+}
+.update-email-page{
+    /* border: 1px blue solid; */
+    width: 50%;
+    height: 300px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}.form-update{
+    display: grid;
+    grid-template: 1fr 1fr 1fr / 1fr;
+}

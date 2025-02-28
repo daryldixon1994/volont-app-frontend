@@ -25,3 +25,20 @@
   align-items: center;
   gap: 5px;
 }
+#user-img-box {
+  position: relative;
+}
+#edit-img-icon {
+  position: absolute;
+  right: 0;
+  bottom: 0px;
+}
+#img-input{
+  display: none;
+}
+#save-cancel-box {
+  position: absolute;
+  bottom: 0px;
+  display: flex;
+  gap: 5px;
+}

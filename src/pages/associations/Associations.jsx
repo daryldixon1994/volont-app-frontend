@@ -16,7 +16,7 @@ function Associations() {
           ))}
         </div>
       ) : (
-        <div id="acts-loading-box">
+        <div className="acts-loading-box">
           <PuffLoader color="#f24638" size={200} />
         </div>
       )}

@@ -7,9 +7,10 @@ export default function AssoItem({
   logo,
   description,
   category,
+  _id,
 }) {
   const header = (
-    <Link>
+    <Link to={`/associations/${_id}`}>
       {" "}
       <img alt="Card" src={logo} />
     </Link>
@@ -18,12 +19,19 @@ export default function AssoItem({
   return (
     <div className="card flex justify-content-center">
       <Card
-        title={<Link style={{ color: "#4C596F" }}>{associationName}</Link>}
+        title={
+          <Link to={`/associations/${_id}`} style={{ color: "#4C596F" }}>
+            {associationName}
+          </Link>
+        }
         subTitle={`#${category}`}
         header={header}
         className="md:w-25rem"
       >
-        <p className="m-0">{description}</p>
+        <p className="m-0">
+          {description.substr(0, 26)}..{" "}
+          <Link to={`/associations/${_id}`}>see more</Link>{" "}
+        </p>
       </Card>
     </div>
   );

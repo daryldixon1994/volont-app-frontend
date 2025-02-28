@@ -26,6 +26,7 @@ function LoginUser() {
         setLoading(false);
         if (res.status === 200) {
           localStorage.setItem("token", res.data.data.token);
+          localStorage.setItem("id", res.data.data.userId);
           // setTimeout(() => {
           //   navigate("/profile");
           // }, 3500);

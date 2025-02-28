@@ -1,6 +1,7 @@
 #act-img {
   height: 270px;
   object-fit: cover;
+  border-radius: 5px;
 }
 .card {
   /* border: 1px black solid; */

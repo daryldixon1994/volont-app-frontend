@@ -12,11 +12,17 @@ import JoinRequests from "./pages/joinRequests/JoinRequests";
 import Login from "./pages/login/Login";
 import MyActs from "./pages/myActs/MyActs";
 import Profile from "./pages/profile/Profile";
-import Settings from "./pages/settings/Settings";
+// import Settings from "./pages/settings/Settings";
 import NavBar from "./components/navbar/NavBar";
 import ConnexionLayout from "./layouts/ConnxionLayout";
 import PublicRoutes from "./routes/PublicRoutes";
-import PrivateRoutes from "./routes/PrivateRoutes";
+import PrivateRoutes from "./routes/UserRoutes";
+import SingleAsso from "./pages/singleAsso/SingleAsso";
+import SettingsLayout from "./layouts/SettingsLayout";
+import UpdateEmail from "./pages/updateEmail/UpdateEmail";
+import UpdatePassword from "./pages/updatePassword/UpdatePassword";
+import UpdateInformations from "./pages/updateInformations/UpdateInformations";
+import Account from "./pages/account/Account";
 function App() {
   return (
     <div id="App">
@@ -48,6 +54,7 @@ function App() {
         <Route path="/acts" element={<Acts />} />
         <Route path="/acts/:id" element={<SingleAct />} />
         <Route path="/associations" element={<Associations />} />
+        <Route path="/associations/:id" element={<SingleAsso />} />
         <Route
           path="/profile"
           element={
@@ -58,10 +65,16 @@ function App() {
         />
         {/* user routes */}
         {/* association routes */}
+        <Route path="/account" element={<Account />} />
         <Route path="/join-request" element={<JoinRequests />} />
         <Route path="/my-acts" element={<MyActs />} />
         {/* association routes */}
-        <Route path="/settings" element={<Settings />} />
+
+        <Route element={<SettingsLayout />}>
+          <Route path="/update-email" element={<UpdateEmail />} />
+          <Route path="/update-password" element={<UpdatePassword />} />
+          <Route path="/update-infos" element={<UpdateInformations />} />
+        </Route>
       </Routes>
     </div>
   );

@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import axios from "axios";
-import { baseUserUrl, getToken } from "../../lib";
+import { baseUserUrl, getId, getToken } from "../../lib";
 
 const MySwal = withReactContent(Swal);
 export default function ActItem({
@@ -15,8 +15,10 @@ export default function ActItem({
   actName,
   associationId,
   description,
+  pendingUsers,
 }) {
   const token = getToken();
+  const id = getId();
   const navigate = useNavigate();
   const joinAct = () => {
     MySwal.fire({
@@ -27,7 +29,7 @@ export default function ActItem({
       if (result.isConfirmed) {
         axios
           .post(
-            `${baseUserUrl}/sendRequest?actId=${_id}&associationId=${associationId._id}`,
+            `${baseUserUrl}/sendRequest?actId=${_id}&associationId=${associationId._id}&userId=${id}`,
             {},
             {
               headers: {
@@ -35,10 +37,22 @@ export default function ActItem({
               },
             }
           )
-          .then((res) => console.log(res))
+          .then((res) => {
+            if (res.status === 204) {
+              MySwal.fire({
+                title: "Your request has been sent successfully",
+                icon: "success",
+                confirmButtonText: "Ok",
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  window.location.reload();
+                }
+              });
+            }
+          })
           .catch((err) => {
             if (err.status === 400 || err.status === 401) {
-              MySwal.fire({
+              return MySwal.fire({
                 title: "You need to Login first",
                 html: "<a href='/register' >Register</a>",
                 confirmButtonText: "Login",
@@ -48,13 +62,17 @@ export default function ActItem({
                 }
               });
             }
+            if (err.status === 405) {
+              localStorage.clear();
+              navigate("/login");
+            }
           });
         // Swal.fire("Saved!", "", "success");
       }
     });
   };
   const linkStyle = {
-    all: "unset",
+    color: "#4C566A",
     boxSizing: "border-box",
   };
   const header = (
@@ -64,6 +82,7 @@ export default function ActItem({
   );
   const subTitleElt = (
     <Link
+    to={`/associations/${associationId._id}`}
       style={{
         all: "unset",
         display: "flex",
@@ -79,19 +98,31 @@ export default function ActItem({
   );
   const footer = (
     <>
-      <Button onClick={joinAct} label="Join" />
+      <Button
+        disabled={pendingUsers?.includes(id)}
+        onClick={joinAct}
+        label={pendingUsers?.includes(id) ? "Pending" : "Join"}
+        style={pendingUsers?.includes(id) ? { cursor: "not-allowed" } : {}}
+      />
     </>
   );
 
   return (
     <div className="card">
       <Card
-        title={<Link style={linkStyle}>{actName}</Link>}
+        title={
+          <Link to={`/acts/${_id}`} style={linkStyle}>
+            {actName}
+          </Link>
+        }
         subTitle={subTitleElt}
         footer={footer}
         header={header}
       >
-        <p className="m-0">{description}</p>
+        <p className="m-0">
+          {description?.substr(0, 25)}...{" "}
+          <Link to={`/acts/${_id}`}>see more</Link>{" "}
+        </p>
       </Card>
     </div>
   );
