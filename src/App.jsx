@@ -16,13 +16,16 @@ import Profile from "./pages/profile/Profile";
 import NavBar from "./components/navbar/NavBar";
 import ConnexionLayout from "./layouts/ConnxionLayout";
 import PublicRoutes from "./routes/PublicRoutes";
-import PrivateRoutes from "./routes/UserRoutes";
+import UserRoutes from "./routes/UserRoutes";
 import SingleAsso from "./pages/singleAsso/SingleAsso";
 import SettingsLayout from "./layouts/SettingsLayout";
 import UpdateEmail from "./pages/updateEmail/UpdateEmail";
 import UpdatePassword from "./pages/updatePassword/UpdatePassword";
 import UpdateInformations from "./pages/updateInformations/UpdateInformations";
-import Account from "./pages/account/Account";
+import AssociationRoutes from "./routes/AssociationRoutes";
+import AccountLayout from "./layouts/AccountLayout";
+import AddAct from "./pages/addAct/AddAct";
+import WrongPath from "./pages/wrongPath/WrongPath";
 function App() {
   return (
     <div id="App">
@@ -58,16 +61,40 @@ function App() {
         <Route
           path="/profile"
           element={
-            <PrivateRoutes>
+            <UserRoutes>
               <Profile />
-            </PrivateRoutes>
+            </UserRoutes>
           }
         />
+        
         {/* user routes */}
         {/* association routes */}
-        <Route path="/account" element={<Account />} />
-        <Route path="/join-request" element={<JoinRequests />} />
-        <Route path="/my-acts" element={<MyActs />} />
+        <Route element={<AccountLayout />}>
+          <Route
+            path="/add-act"
+            element={
+              <AssociationRoutes>
+                <AddAct />
+              </AssociationRoutes>
+            }
+          />
+          <Route
+            path="/my-acts"
+            element={
+              <AssociationRoutes>
+                <MyActs />
+              </AssociationRoutes>
+            }
+          />
+          <Route
+            path="/join-request"
+            element={
+              <AssociationRoutes>
+                <JoinRequests />
+              </AssociationRoutes>
+            }
+          />
+        </Route>
         {/* association routes */}
 
         <Route element={<SettingsLayout />}>
@@ -75,6 +102,7 @@ function App() {
           <Route path="/update-password" element={<UpdatePassword />} />
           <Route path="/update-infos" element={<UpdateInformations />} />
         </Route>
+        <Route path="*" element={<WrongPath />} />
       </Routes>
     </div>
   );

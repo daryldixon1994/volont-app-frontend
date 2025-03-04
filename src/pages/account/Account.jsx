@@ -1,5 +1,9 @@
 function Account() {
-  return <div>Account</div>;
+  return (
+    <div>
+      <h1>Association Account</h1>
+    </div>
+  );
 }
 
 export default Account;

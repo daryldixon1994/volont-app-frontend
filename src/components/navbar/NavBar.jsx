@@ -1,8 +1,13 @@
 import { NavLink } from "react-router-dom";
 import "./style.css";
 import { getToken } from "../../lib";
+import useCheckUser from "../../lib/useCheckUser";
+import useCheckAssociation from "../../lib/useCheckAssociation";
 
 function NavBar() {
+  const checkUser = useCheckUser();
+  const checkAssociation = useCheckAssociation();
+
   const navlinks = [
     { path: "/", key: "Home" },
     { path: "/about", key: "About" },
@@ -50,39 +55,52 @@ function NavBar() {
             {key}
           </NavLink>
         ))}
+
+        {checkUser && !checkAssociation ? (
+          <NavLink
+            to="/profile"
+            style={({ isActive }) => {
+              return isActive ? activeLink : inactiveLink;
+            }}
+          >
+            Profile
+          </NavLink>
+        ) : (
+          <NavLink
+            to="/add-act"
+            style={({ isActive }) => {
+              return isActive ? activeLink : inactiveLink;
+            }}
+          >
+            Account
+          </NavLink>
+        )}
+        <NavLink
+          to="/update-email"
+          style={({ isActive }) => {
+            return isActive ? activeLink : inactiveLink;
+          }}
+        >
+          Settings
+        </NavLink>
+      </nav>
+      {/* cnx links */}
+      <div className="cnx-links">
         {token ? (
-          <>
-            <NavLink
-              to="/profile"
-              style={({ isActive }) => {
-                return isActive ? activeLink : inactiveLink;
-              }}
-            >
-              Profile
-            </NavLink>
-            <NavLink
-              to="/update-email"
-              style={({ isActive }) => {
-                return isActive ? activeLink : inactiveLink;
-              }}
-            >
-              Settings
-            </NavLink>
-            <NavLink
-              style={{
-                all: "unset",
-                fontWeight: "700",
-                backgroundColor: "white",
-                padding: "1.5px 5px",
-                color: "#97010E",
-                borderRadius: "5px",
-                cursor: "pointer",
-              }}
-              onClick={handleLogout}
-            >
-              Logout
-            </NavLink>
-          </>
+          <NavLink
+            style={{
+              all: "unset",
+              fontWeight: "700",
+              borderBottom: "1px #E1E1E1 solid",
+              // padding: "1.5px 5px",
+              color: "#E1E1E1",
+              // borderRadius: "5px",
+              cursor: "pointer",
+            }}
+            onClick={handleLogout}
+          >
+            Logout
+          </NavLink>
         ) : (
           <>
             <NavLink
@@ -103,7 +121,7 @@ function NavBar() {
             </NavLink>
           </>
         )}
-      </nav>
+      </div>
     </div>
   );
 }

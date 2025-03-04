@@ -1,4 +1,5 @@
-#connexion-layout-container {
+#connexion-layout-container,
+#account-layout {
   /* border: 1px black solid; */
   min-height: 89vh;
   display: flex;
@@ -42,3 +43,24 @@
   font-weight: 500;
   font-size: 1.1rem;
 }
+#account-layout header {
+  /* border-bottom: 1px blue solid; */
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+}
+#account-layout header a {
+  all: unset;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #f34c3f;
+  width: 100%;
+  text-align: center;
+  padding-bottom: 5px;
+  cursor: pointer;
+  transition: 0.3s ease-in;
+}
+/* #account-layout header a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+} */

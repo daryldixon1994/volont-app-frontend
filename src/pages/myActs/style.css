@@ -1,0 +1,33 @@
+#my-acts-header {
+  border-bottom: 1px #e1e1e1 solid;
+  display: grid;
+  grid-template: 1fr / repeat(10, 1fr);
+  padding-bottom: 10px;
+  gap: 10px;
+}
+#my-acts-header h5 {
+  margin: 0;
+  font-weight: 500;
+  color: #5a6b5d;
+  text-align: center;
+font-size:0.8rem;
+}
+.act {
+  border-bottom: 1px rgb(191, 191, 191) solid;
+  display: grid;
+  grid-template: 1fr / repeat(10, 1fr);
+  padding: 10px 0px;
+  justify-items: center;
+  align-items: center;
+  column-gap: 10px;
+}
+.act h5 {
+  text-align: center;
+  margin: 0;
+}
+.act img {
+  width: 65px;
+  height: 65px;
+  object-fit: cover;
+  border-radius: 50%;
+}

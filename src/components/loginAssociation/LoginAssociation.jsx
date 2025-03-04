@@ -28,7 +28,7 @@ function LoginAssociation() {
         if (res.status === 200) {
           localStorage.setItem("token", res.data.data.token);
           localStorage.setItem("id", res.data.data.assoId);
-          window.location.assign("/account");
+          window.location.assign("/my-acts");
         }
       })
       .catch((err) => {

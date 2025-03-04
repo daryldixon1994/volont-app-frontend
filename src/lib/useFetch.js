@@ -3,9 +3,10 @@ import axios from "axios";
 
 function useFetch(url, token) {
   const [data, setData] = useState([]);
-  const [error, setError] = useState([]);
+  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
+    setLoading(true);
     axios
       .get(url, {
         headers: {
@@ -13,7 +14,7 @@ function useFetch(url, token) {
         },
       })
       .then((res) => {
-        setLoading(true);
+        setLoading(false);
         setData(res.data.data);
       })
       .catch((err) => {

@@ -23,6 +23,7 @@ function LoginUser() {
     axios
       .post(`${baseUserUrl}/login`, loginData)
       .then((res) => {
+        console.log(res)
         setLoading(false);
         if (res.status === 200) {
           localStorage.setItem("token", res.data.data.token);
