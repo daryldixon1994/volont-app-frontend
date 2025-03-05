@@ -11,12 +11,16 @@ function useCheckUser() {
     axios
       .get(`${baseUrl}/check-user/${token}`)
       .then((res) => {
-        console.log("res:", res);
+        // console.log("res:", res);
         if (res.data.isUserLoggedIn) {
           setCheckUser(true);
         }
       })
-      .catch();
+      .catch((err) => {
+        if (err) {
+          return;
+        }
+      });
   }, [navigate, token]);
   return checkUser;
 }

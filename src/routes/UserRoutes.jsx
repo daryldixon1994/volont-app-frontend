@@ -6,6 +6,7 @@ import axios from "axios";
 
 function UserRoutes({ children }) {
   const [checkUser, setCkeckUser] = useState(false);
+  // console.log("checkUser:", checkUser);
   let token = getToken();
   const navigate = useNavigate();
   useEffect(() => {

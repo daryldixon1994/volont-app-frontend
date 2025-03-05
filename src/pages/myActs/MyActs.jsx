@@ -35,51 +35,53 @@ function MyActs() {
         <h5>Pending Users</h5>
       </div>
       <div className="acts-data">
-        {loading
-          ? // <div>loading...</div>
-            skeletonData.map((elt, i) => (
-              // <Skeleton height="2rem" className="mb-2"></Skeleton>
-              <div key={i} className="act">
-                <Skeleton
-                  shape="circle"
-                  size="3rem"
-                  className="mr-2"
-                ></Skeleton>
-                <Skeleton height="2rem" className="mb-2"></Skeleton>
-                <Skeleton height="2rem" className="mb-2"></Skeleton>
-                <Skeleton height="2rem" className="mb-2"></Skeleton>
-                <Skeleton height="2rem" className="mb-2"></Skeleton>
-                <Skeleton height="2rem" className="mb-2"></Skeleton>
-                <Skeleton height="2rem" className="mb-2"></Skeleton>
-                <Skeleton height="2rem" className="mb-2"></Skeleton>
-                <Skeleton height="2rem" className="mb-2"></Skeleton>
-              </div>
-            ))
-          : data.map((act) => (
-              <div key={act._id} className="act">
-                <img src={act.img} alt="" />
-                <h5>{act.actName}</h5>
-                <h5>
-                  {act.actDate && new Date(act.actDate).toLocaleDateString()}
-                </h5>
-                <h5>{act.actHour}</h5>
-                <h5>{act.location}</h5>
-                <h5>{act.category}</h5>
-                <h5>{act.volonteersNbr}</h5>
-                <h5
-                  style={{}}
-                  onClick={() => {
-                    setUsers(act.users);
-                    show();
-                  }}
-                >
-                  <Link>See more</Link>
-                </h5>
-                <Link style={{ textDecoration: "none" }} to={`/join-request`}>
-                  <h5>{act.pendingUsers?.length}</h5>
-                </Link>
-              </div>
-            ))}
+        {loading ? (
+          // <div>loading...</div>
+          skeletonData.map((elt, i) => (
+            // <Skeleton height="2rem" className="mb-2"></Skeleton>
+            <div key={i} className="act">
+              <Skeleton shape="circle" size="3rem" className="mr-2"></Skeleton>
+              <Skeleton height="2rem" className="mb-2"></Skeleton>
+              <Skeleton height="2rem" className="mb-2"></Skeleton>
+              <Skeleton height="2rem" className="mb-2"></Skeleton>
+              <Skeleton height="2rem" className="mb-2"></Skeleton>
+              <Skeleton height="2rem" className="mb-2"></Skeleton>
+              <Skeleton height="2rem" className="mb-2"></Skeleton>
+              <Skeleton height="2rem" className="mb-2"></Skeleton>
+              <Skeleton height="2rem" className="mb-2"></Skeleton>
+            </div>
+          ))
+        ) : data.length >= 1 ? (
+          data.map((act) => (
+            <div key={act._id} className="act">
+              <img src={act.img} alt="" />
+              <h5>{act.actName}</h5>
+              <h5>
+                {act.actDate && new Date(act.actDate).toLocaleDateString()}
+              </h5>
+              <h5>{act.actHour}</h5>
+              <h5>{act.location}</h5>
+              <h5>{act.category}</h5>
+              <h5>{act.volonteersNbr}</h5>
+              <h5
+                style={{}}
+                onClick={() => {
+                  setUsers(act.users);
+                  show();
+                }}
+              >
+                <Link>See more</Link>
+              </h5>
+              <Link style={{ textDecoration: "none" }} to={`/join-request`}>
+                <h5>{act.pendingUsers?.length}</h5>
+              </Link>
+            </div>
+          ))
+        ) : (
+          <h4>
+            No acts yet. <br /> <Link to="/add-act">Add act</Link>{" "}
+          </h4>
+        )}
       </div>
       <Dialog
         header="Users"

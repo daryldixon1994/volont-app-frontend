@@ -1,5 +1,38 @@
 .account-outlet {
-  border: 1px black solid;
+  /* border: 1px black solid; */
   width: 70%;
   margin-top: 40px;
+}
+#add-act-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+#add-act-form input,
+#add-act-form textarea,
+#add-act-form select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  outline: none;
+}
+
+#add-act-form button {
+  width: 100px;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  background-color: #212a3e;
+  color: white;
+  cursor: pointer;
+}
+
+#add-act-form button:hover {
+  background-color: #2d3953;
 }

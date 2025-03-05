@@ -1,3 +1,29 @@
 /* .p-overlaypanel-content {
   width: 500px;
 } */
+#join-requests-header h5 {
+  font-weight: 500;
+  color: #5a6b5d;
+  text-align: center;
+  font-size: 0.8rem;
+}
+#join-requests-header {
+  display: grid;
+  grid-template: 1fr / repeat(6, 1fr);
+}
+.join-request {
+  display: grid;
+  grid-template: 1fr / repeat(6, 1fr);
+  padding: 10px 0px;
+  justify-items: center;
+  align-items: center;
+  column-gap: 10px;
+  border-bottom: 1px rgb(191, 191, 191) solid;
+}
+.join-request h5 {
+  margin: 0;
+}
+.action-btn-req:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}

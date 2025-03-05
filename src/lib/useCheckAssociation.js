@@ -15,7 +15,11 @@ function useCheckAssociation() {
           setCheckAssociation(true);
         }
       })
-      .catch();
+      .catch((err) => {
+        if (err) {
+          return;
+        }
+      });
   }, [navigate, token]);
   return checkAssociation;
 }

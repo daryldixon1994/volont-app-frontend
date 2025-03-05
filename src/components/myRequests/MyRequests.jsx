@@ -7,7 +7,7 @@ import "./style.css";
 function MyRequests() {
   const token = getToken();
   const { data, error } = useFetch(`${baseUserUrl}/getOwnRequests`, token);
-  if (error.status === 401) {
+  if (error?.status === 401) {
     localStorage.clear();
     return window.location.assign("/login");
   }

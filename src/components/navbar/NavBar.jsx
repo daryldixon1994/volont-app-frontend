@@ -7,7 +7,7 @@ import useCheckAssociation from "../../lib/useCheckAssociation";
 function NavBar() {
   const checkUser = useCheckUser();
   const checkAssociation = useCheckAssociation();
-
+  // console.log(checkUser, checkAssociation);
   const navlinks = [
     { path: "/", key: "Home" },
     { path: "/about", key: "About" },
@@ -56,7 +56,7 @@ function NavBar() {
           </NavLink>
         ))}
 
-        {checkUser && !checkAssociation ? (
+        {checkUser && !checkAssociation && (
           <NavLink
             to="/profile"
             style={({ isActive }) => {
@@ -65,7 +65,8 @@ function NavBar() {
           >
             Profile
           </NavLink>
-        ) : (
+        )}
+        {!checkUser && checkAssociation && (
           <NavLink
             to="/add-act"
             style={({ isActive }) => {
@@ -75,6 +76,7 @@ function NavBar() {
             Account
           </NavLink>
         )}
+
         <NavLink
           to="/update-email"
           style={({ isActive }) => {

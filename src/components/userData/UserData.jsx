@@ -24,7 +24,7 @@ function UserData() {
   // console.log(newImgUrl);
   const { data, error } = useFetch(`${baseUserUrl}/getOwnInfos`, token);
 
-  if (error.status === 401) {
+  if (error?.status === 401) {
     localStorage.clear();
     return window.location.assign("/login");
   }
