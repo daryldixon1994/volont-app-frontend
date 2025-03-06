@@ -29,7 +29,7 @@ function RequestItem({
       </div>
       <div className="div3">
         {isAccepted && <FaCheck color="green" />}
-        {isDeclined && <IoClose />}
+        {isDeclined && <IoClose color="red" />}
         {isPending && <CiClock1 />}
       </div>
     </div>

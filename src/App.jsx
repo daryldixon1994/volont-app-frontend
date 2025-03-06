@@ -26,6 +26,8 @@ import AssociationRoutes from "./routes/AssociationRoutes";
 import AccountLayout from "./layouts/AccountLayout";
 import AddAct from "./pages/addAct/AddAct";
 import WrongPath from "./pages/wrongPath/WrongPath";
+import ForgotPassword from "./pages/forgotPassword/ForgotPassword";
+import ResetPassword from "./pages/resetPassword/ResetPassword";
 function App() {
   return (
     <div id="App">
@@ -66,7 +68,7 @@ function App() {
             </UserRoutes>
           }
         />
-        
+
         {/* user routes */}
         {/* association routes */}
         <Route element={<AccountLayout />}>
@@ -97,11 +99,19 @@ function App() {
         </Route>
         {/* association routes */}
 
-        <Route element={<SettingsLayout />}>
+        <Route
+          element={
+            <UserRoutes>
+              <SettingsLayout />
+            </UserRoutes>
+          }
+        >
           <Route path="/update-email" element={<UpdateEmail />} />
           <Route path="/update-password" element={<UpdatePassword />} />
           <Route path="/update-infos" element={<UpdateInformations />} />
         </Route>
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="*" element={<WrongPath />} />
       </Routes>
     </div>

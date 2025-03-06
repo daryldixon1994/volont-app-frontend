@@ -21,7 +21,7 @@ function UserData() {
   // const [userData, setUserData] = useState(null);
   const [newImg, setNewImg] = useState(null);
   const [newImgUrl, setNewImgUrl] = useState("");
-  // console.log(newImgUrl);
+  console.log("newImgUrl:", newImgUrl);
   const { data, error } = useFetch(`${baseUserUrl}/getOwnInfos`, token);
 
   if (error?.status === 401) {
@@ -29,12 +29,12 @@ function UserData() {
     return window.location.assign("/login");
   }
   const handleChange = (e) => {
-    // console.log(e.target.files[0].name);
     setNewImgUrl(URL.createObjectURL(e.target.files[0]));
     setNewImg(e.target.files[0]);
   };
   const handleCancelUpdate = () => {
     setNewImgUrl("");
+    setNewImg(null);
   };
   const handleUpdate = () => {
     const imageFomData = new FormData();

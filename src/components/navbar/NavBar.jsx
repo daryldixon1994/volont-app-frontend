@@ -57,14 +57,24 @@ function NavBar() {
         ))}
 
         {checkUser && !checkAssociation && (
-          <NavLink
-            to="/profile"
-            style={({ isActive }) => {
-              return isActive ? activeLink : inactiveLink;
-            }}
-          >
-            Profile
-          </NavLink>
+          <>
+            <NavLink
+              to="/profile"
+              style={({ isActive }) => {
+                return isActive ? activeLink : inactiveLink;
+              }}
+            >
+              Profile
+            </NavLink>
+            <NavLink
+              to="/update-email"
+              style={({ isActive }) => {
+                return isActive ? activeLink : inactiveLink;
+              }}
+            >
+              Settings
+            </NavLink>
+          </>
         )}
         {!checkUser && checkAssociation && (
           <NavLink
@@ -76,15 +86,6 @@ function NavBar() {
             Account
           </NavLink>
         )}
-
-        <NavLink
-          to="/update-email"
-          style={({ isActive }) => {
-            return isActive ? activeLink : inactiveLink;
-          }}
-        >
-          Settings
-        </NavLink>
       </nav>
       {/* cnx links */}
       <div className="cnx-links">

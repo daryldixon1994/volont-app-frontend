@@ -10,7 +10,7 @@
   font-weight: 500;
   color: #5a6b5d;
   text-align: center;
-font-size:0.8rem;
+  font-size: 0.8rem;
 }
 .act {
   border-bottom: 1px rgb(191, 191, 191) solid;
@@ -30,4 +30,17 @@ font-size:0.8rem;
   height: 65px;
   object-fit: cover;
   border-radius: 50%;
+}
+#users-list {
+  /* border: 1px black solid; */
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+#users-list #users-list-header {
+  display: grid;
+  grid-template: 1fr / repeat(5, 1fr);
+}
+#users-list #users-list-header h5 {
+  margin: 0;
 }

@@ -7,6 +7,7 @@ import { baseUserUrl } from "../../lib";
 import { Flip, toast, ToastContainer } from "react-toastify";
 import { BeatLoader } from "react-spinners";
 import { LuEye, LuEyeClosed } from "react-icons/lu";
+import { Link } from "react-router-dom";
 
 // const MySwal = withReactContent(Swal);
 function LoginUser() {
@@ -23,14 +24,11 @@ function LoginUser() {
     axios
       .post(`${baseUserUrl}/login`, loginData)
       .then((res) => {
-        console.log(res)
+        console.log(res);
         setLoading(false);
         if (res.status === 200) {
           localStorage.setItem("token", res.data.data.token);
           localStorage.setItem("id", res.data.data.userId);
-          // setTimeout(() => {
-          //   navigate("/profile");
-          // }, 3500);
           window.location.assign("/profile");
         }
       })
@@ -40,11 +38,6 @@ function LoginUser() {
 
         if (err.response.status === 406) {
           setErrorMsg(err.response.data.error);
-          // MySwal.fire({
-          //   icon: "error",
-          //   title: "Oops...!",
-          //   text: err.response.data.error,
-          // });
           toast.error(err.response.data.error, {
             position: "bottom-center",
             autoClose: 5000,
@@ -70,11 +63,7 @@ function LoginUser() {
           type="email"
           name="email"
         />
-        {/* <input
-          style={errorMsg ? { border: "1px red solid" } : {}}
-          type="password"
-          name="password"
-        /> */}
+
         <div className="field-box" id="pwd-box">
           <input
             style={errorMsg ? { border: "1px red solid" } : {}}
@@ -97,7 +86,7 @@ function LoginUser() {
             />
           )}
         </div>
-        {/* {errorMsg && <span style={{ color: "red" }}>{errorMsg}</span>} */}
+
         <button type="button" onClick={handleLogin} className="auth-btn">
           {loading ? (
             <BeatLoader width={2} height={8} color="white" />
@@ -105,6 +94,9 @@ function LoginUser() {
             "Login"
           )}
         </button>
+        <Link to="/forgot-password" className="forgot-password-link">
+          Forgot Password
+        </Link>
       </form>
       <ToastContainer
         position="bottom-center"

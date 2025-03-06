@@ -5,6 +5,7 @@ import { Skeleton } from "primereact/skeleton";
 import "./style.css";
 import { Dialog } from "primereact/dialog";
 import { useState } from "react";
+import UserItem from "../../components/userItem/UserItem";
 function MyActs() {
   const [visible, setVisible] = useState(false);
   const [users, setUsers] = useState([]);
@@ -87,7 +88,7 @@ function MyActs() {
         header="Users"
         visible={visible}
         position="top"
-        style={{ width: "50vw" }}
+        style={{ width: "80%" }}
         onHide={() => {
           if (!visible) return;
           setVisible(false);
@@ -95,11 +96,20 @@ function MyActs() {
         draggable={true}
         resizable={false}
       >
-        {users.length >= 1 ? (
-          users.map(() => {})
-        ) : (
-          <p className="m-0">No users yet</p>
-        )}
+        <div id="users-list">
+          <div id="users-list-header">
+            <h5></h5>
+            <h5>Username</h5>
+            <h5>Email</h5>
+            <h5>Phone</h5>
+            <h5>Address</h5>
+          </div>
+          {users.length >= 1 ? (
+            users.map((user, i) => <UserItem key={i} {...user} />)
+          ) : (
+            <p className="m-0">No users yet</p>
+          )}
+        </div>
       </Dialog>
     </div>
   );

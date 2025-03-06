@@ -20,6 +20,10 @@ function useFetch(url, token) {
       .catch((err) => {
         setLoading(false);
         setError(err.response);
+        if (err.status === 400 || err.status === 401) {
+          localStorage.clear();
+          window.location.assign("/login");
+        }
       });
   }, [token, url]);
   return { data, error, loading };

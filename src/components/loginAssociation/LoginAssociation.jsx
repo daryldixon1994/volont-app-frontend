@@ -7,6 +7,7 @@ import { baseAssoUrl } from "../../lib";
 import { Flip, toast, ToastContainer } from "react-toastify";
 import { BeatLoader } from "react-spinners";
 import { LuEye, LuEyeClosed } from "react-icons/lu";
+import { Link } from "react-router-dom";
 
 // const MySwal = withReactContent(Swal);
 function LoginAssociation() {
@@ -91,6 +92,7 @@ function LoginAssociation() {
             "Login"
           )}
         </button>
+        <Link to="/reset-password">Forgot Password?</Link>
       </form>
       <ToastContainer
         position="bottom-center"

@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import axios from "axios";
 import { baseUserUrl, getId, getToken } from "../../lib";
+import useCheckAssociation from "../../lib/useCheckAssociation";
 
 const MySwal = withReactContent(Swal);
 export default function ActItem({
@@ -19,6 +20,7 @@ export default function ActItem({
 }) {
   const token = getToken();
   const id = getId();
+  const checkAssociation = useCheckAssociation();
   const navigate = useNavigate();
   const joinAct = () => {
     MySwal.fire({
@@ -82,7 +84,7 @@ export default function ActItem({
   );
   const subTitleElt = (
     <Link
-    to={`/associations/${associationId._id}`}
+      to={`/associations/${associationId._id}`}
       style={{
         all: "unset",
         display: "flex",
@@ -116,7 +118,7 @@ export default function ActItem({
           </Link>
         }
         subTitle={subTitleElt}
-        footer={footer}
+        footer={!checkAssociation && footer}
         header={header}
       >
         <p className="m-0">

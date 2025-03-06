@@ -9,7 +9,7 @@ function AddAct() {
   const formRef = useRef(null);
   const [formData, setFormData] = useState({
     actName: "",
-    actDescription: "",
+    description: "",
     actDate: "",
     actHour: "",
     location: "",
@@ -32,21 +32,22 @@ function AddAct() {
       data.append(key, formData[key]);
     }
     try {
-      const response = await axios.post(`${baseAssoUrl}/addAct`, data, {
+       await axios.post(`${baseAssoUrl}/addAct`, data, {
         headers: {
           "Content-Type": "multipart/form-data",
           token,
         },
       });
-      formRef.current.reset();
       const MySwalInstance = MySwal(Swal);
-
       MySwalInstance.fire({
         icon: "success",
         title: "Success",
         text: "The act has been added successfully!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          formRef.current.reset();
+        }
       });
-      console.log(response.data);
     } catch (error) {
       console.error("There was an error!", error);
     }
@@ -69,8 +70,8 @@ function AddAct() {
           Act Description
           <input
             type="text"
-            name="actDescription"
-            value={formData.actDescription}
+            name="description"
+            value={formData.description}
             onChange={handleChange}
           />
         </label>
