@@ -36,6 +36,7 @@ function App() {
         <Route index path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/verify-email/:id" element={<VerifyEmail />} />
+        <Route path="/asso/verify-email/:id" element={<VerifyEmail />} />
         <Route path="/contact-us" element={<ContactUs />} />
         <Route element={<ConnexionLayout />}>
           <Route
